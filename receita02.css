@@ -1,0 +1,39 @@
+p.verso {
+   color: blue;
+}
+
+p.mote {
+   color: red;
+}
+
+a:link {
+   color: red;      
+}
+
+a:visited {
+   color: green;    
+}
+
+a:hover {
+   color: hotpink;  
+}
+
+a:active {
+   color: blue;    
+}
+
+.avatar {
+   border-radius: 50%;
+   width: 100px;
+   height: 100px;
+}
+
+div.poeta img {
+   border-radius: 50%;
+}
+
+th {
+   background-color: #04AA6D;
+   color: white;
+   padding: 8px;
+}
