@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>   
+  <head>
+    <meta charset="UTF-8">      
+    <link rel="stylesheet" href="receita03.css">
+  </head>
+  <body>
+
+    <div>
+      <button id="botaoCarregar">Mostrar/Apagar</button>
+    </div>    
+
+    <div id="meuAmor"></div>            
+
+    <script>
+      const div = document.getElementById("meuAmor");
+      const botao = document.getElementById("botaoCarregar");
+      const nomeCerveja = "Guinness";
+
+      let visivel = false;
+
+      botao.addEventListener("click", () => {
+        if (!visivel) {
+          div.innerHTML = `<h1>${nomeCerveja}</h1>`;
+          div.style.opacity = 0;
+          setTimeout(() => div.style.opacity = 1, 50);
+          visivel = true;
+        } else {
+          div.style.opacity = 0;
+          setTimeout(() => {
+            div.innerHTML = "";
+            visivel = false;
+          }, 500);
+        }
+      });
+    </script>
+
+  </body>
+</html>
