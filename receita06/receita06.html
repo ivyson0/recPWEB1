@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+
+<html>   
+
+   <head>
+
+      <meta charset="UTF-8"> 
+      <style>
+
+        table {
+          width: 100%;
+          border-collapse: collapse;
+          margin-top: 10px;
+        }
+        th, td {
+          border: 1px solid black;
+          padding: 8px;
+          text-align: center;
+        }
+        th {
+          background-color: #feec42;
+        }
+     </style>           
+
+   </head>
+
+   <body>
+
+      <div><button id="botaoCarregar">Carregando cervejas...</button></div>
+
+      <div id="cervejasDiv"></div>            
+
+   </body>   
+
+    <script>
+
+        let cervejas = [
+
+            {
+
+                name: "Guiness", 
+
+                alcohol: "10%",        
+
+                ibu: "15",
+            
+                style:"Red Ale"
+
+            }, 
+
+            {
+
+                name: "Desperados",
+
+                alcohol: "6%",  
+
+                ibu: "20",
+            
+                style:"English IPA"
+            
+
+            }, 
+
+            {
+
+                name: "Becks",
+
+                alcohol: "5%",
+
+                ibu: "25",
+            
+                style:"Imperial Stout"
+                
+
+            },
+
+            { 
+                name: "Heineken",
+
+                alcohol: "5%",
+
+                ibu: "30",
+            
+                style:"Cream Ale"
+
+
+            },
+
+            { 
+                name: "Corona Extra",
+
+                alcohol: "4,5%",
+
+                ibu: "40",
+            
+                style:"Lager"
+
+            },
+
+            {
+                name: "Budweiser",
+
+                alcohol: "5%",
+
+                ibu: "50",
+            
+                style:"APA"
+
+            },
+
+            {
+                name: "Stella Artois",
+
+                alcohol: "5%",
+
+                ibu: "60",
+            
+                style:"Pilsen"
+
+            }
+        ]
+
+        const carregarDiv = (
+            cs, 
+            elementId = "cervejasDiv", 
+            headers = ["Nome", "Álcool", "Estilo", "Amargor"],
+            keys = ["name", "alcohol", "style", "ibu"]
+        ) => {
+            const div = document.getElementById(elementId);
+
+            let tabela = `
+                <table>
+                <tr>
+                    ${headers.map(h => `<th>${h}</th>`).join("")}
+                </tr>
+                ${cs.map(item => `
+                    <tr>
+                    ${keys.map(k => `<td>${item[k]}</td>`).join("")}
+                    </tr>
+                `).join("")}
+                </table>
+            `;
+
+            div.innerHTML = tabela;
+        }
+
+        let botao = document.getElementById("botaoCarregar")
+
+        botao.addEventListener("click", () => carregarDiv(cervejas) )                 
+
+    </script>
+
+</html>

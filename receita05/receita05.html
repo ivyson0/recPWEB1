@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>   
+    <head>
+        <meta charset="UTF-8">
+        <style>
+
+            table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            }
+            th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+            }
+            th {
+            background-color: #feec42;
+            }
+        </style>      
+    </head>
+
+    <body>
+      <div>
+         <a href="#" onclick="carregarDiv(); return false;">Carregar Jogos Indie...</a>
+      </div>    
+
+      <div id="issoEhUmId" class="meuDiv"></div>     
+      
+      <div><a href="#" onclick="sortTable(); return false;">ORDENAR</a></div>
+      <div><a href="#" onclick="shuffleTable(); return false;">EMBARALHAR</a></div>
+
+
+    </body>   
+
+    <script>
+        let indie = ["Dead Cells", "Hollow Knight", "Stardew Valley", "Blasphemous", "Omori", "Plants vs Zombies"];
+
+        const carregarDiv = () => {
+            const div = document.getElementById("issoEhUmId");
+
+            const tabela = `
+                <table>
+                <tr>
+                    <th>Jogos Indie</th>
+                </tr>
+                ${indie.map(item => `
+                    <tr>
+                        <td>${item}</td>
+                    </tr>
+                `).join("")}
+                </table>
+            `;
+
+            div.innerHTML = tabela;
+        }
+
+        
+        // Função obtida no w3schools 27/08/25 
+        const sortTable = () => {
+            indie.sort(); 
+            carregarDiv(); 
+        }
+        
+        // Função obtida no stackoverflow 27/08/25
+        const shuffle = array => {
+            let currentIndex = array.length;
+
+            while (currentIndex != 0) {
+                let randomIndex = Math.floor(Math.random() * currentIndex);
+                currentIndex--;
+
+                [array[currentIndex], array[randomIndex]] = [
+                    array[randomIndex], array[currentIndex]];
+            }
+        }
+
+        const shuffleTable = () => {
+            shuffle(indie);
+            carregarDiv(); 
+        }
+    </script>
+</html>
