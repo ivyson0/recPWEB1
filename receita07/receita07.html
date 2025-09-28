@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>   
+  <head>
+    <meta charset="UTF-8">      
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+    <div><button id="botaoCarregar">Carregar usuários...</button></div>
+    <div id="usuariosDiv"></div>            
+  </body>   
+   
+  <script src="tabela.js"></script>
+  <script>
+    let usuarios = []
+
+    async function carregarUsuarios(){
+      let res = await fetch("https://randomuser.me/api/?results=5")            // A API de cervejas do material não funciona, esta API de usuários está sendo usada
+
+      let data = await res.json()
+      usuarios = data.results.map(u => ({
+        Tabela: `<img src="${u.picture.medium}" alt="tabela">`,
+        Nome: `${u.name.first} ${u.name.last}`,
+        Usuario: u.login.username,
+        Email: u.email
+      }))
+      montarTabela(usuarios, ["Tabela","Nome","Usuario","Email"], "usuariosDiv")
+    }
+
+    let botao = document.getElementById("botaoCarregar")
+    botao.addEventListener("click", () => carregarUsuarios())                 
+  </script>
+</html>
